@@ -1,10 +1,7 @@
-name: Build and Test
+name: Build and Deploy
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
     branches:
       - main
 
@@ -13,28 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Schritt 1: Repository klonen
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Schritt 2: OpenJDK 20 einrichten
-      - name: Set up JDK 20
+      - name: Set up Java
         uses: actions/setup-java@v3
         with:
           java-version: '20'
-          distribution: 'zulu' # Default SDK (optional, Zulu ist stabil für JDK 20)
+          distribution: 'openjdk'
 
-      # Schritt 3: Abhängigkeiten installieren und Projekt bauen
       - name: Build with Maven
-        run: mvn clean package
+        run: mvn package
 
-      # Schritt 4: Tests ausführen (optional, falls vorhanden)
-      - name: Run tests
-        run: mvn test
-
-      # Schritt 5: Artefakte hochladen (z. B. JAR-Dateien)
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          name: advent-calendar-jar
-          path: target/*.jar
+          publish_dir: target
+          github_token: ${{ secrets.LELELE }}
