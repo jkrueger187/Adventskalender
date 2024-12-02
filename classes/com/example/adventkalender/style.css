@@ -1,9 +1,0 @@
-.button {
-    -fx-background-color: #ffcccb; /* Rot/Weiß */
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #800000; /* Dunkelrot */
-    -fx-border-color: #800000;
-    -fx-border-radius: 5px;
-    -fx-padding: 10;
-}
