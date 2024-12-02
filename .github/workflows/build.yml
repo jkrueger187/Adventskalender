@@ -32,7 +32,7 @@ jobs:
           ls -alh docs/jar
 
       - name: Upload JAR artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: advent-calendar-jar
           path: docs/jar/advent-calendar.jar
@@ -43,10 +43,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Download JAR artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: advent-calendar-jar
           path: ./docs/jar
